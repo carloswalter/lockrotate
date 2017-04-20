@@ -60,6 +60,9 @@ function addScreenOrientationApi(screenObject) {
         var promiseLock;
         var p = new Promise(function(resolve, reject) {
             if (screenObject.nativeLock != null) {
+                //
+                screenOrientation.setOrientation(orientation);
+                //
                 promiseLock = screenObject.nativeLock(orientation);
                 promiseLock.then(function success(res) {
                     resolve();
