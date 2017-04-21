@@ -19,16 +19,11 @@
  *
 */
 
-var screenOrientation = {};
+var exec = require('cordova/exec'),
+    screenOrientation = {};
 
 screenOrientation.setOrientation = function(orientation) {
-    if (blackberry.app) {
-        if (orientation === 'unlocked') {
-            blackberry.app.unlockOrientation();
-        } else {
-            blackberry.app.lockOrientation(orientation);
-        }
-    }
+    exec(null, null, "YoikScreenOrientation", "screenOrientation", ['set', orientation]);
 };
 
 module.exports = screenOrientation;

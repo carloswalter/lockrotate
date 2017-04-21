@@ -19,16 +19,18 @@
  *
 */
 
-var screenOrientation = {};
+#import <Cordova/CDVPlugin.h>
+#import <Cordova/CDVViewController.h>
 
-screenOrientation.setOrientation = function(orientation) {
-    if (blackberry.app) {
-        if (orientation === 'unlocked') {
-            blackberry.app.unlockOrientation();
-        } else {
-            blackberry.app.lockOrientation(orientation);
-        }
-    }
-};
+@interface YoikScreenOrientation : CDVPlugin
 
-module.exports = screenOrientation;
+- (void)screenOrientation:(CDVInvokedUrlCommand *)command;
+@property (strong, nonatomic) NSArray *originalSupportedOrientations;
+
+@end
+
+@interface ForcedViewController : UIViewController
+
+@property (strong, nonatomic) NSString *calledWith;
+
+@end

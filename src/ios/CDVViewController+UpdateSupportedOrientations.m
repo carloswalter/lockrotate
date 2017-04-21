@@ -19,16 +19,14 @@
  *
 */
 
-var screenOrientation = {};
+#import "CDVViewController+UpdateSupportedOrientations.h"
 
-screenOrientation.setOrientation = function(orientation) {
-    if (blackberry.app) {
-        if (orientation === 'unlocked') {
-            blackberry.app.unlockOrientation();
-        } else {
-            blackberry.app.lockOrientation(orientation);
-        }
-    }
-};
+@implementation CDVViewController (UpdateSupportedOrientations)
 
-module.exports = screenOrientation;
+- (void)updateSupportedOrientations:(NSArray *)orientations {
+
+	[self setValue:orientations forKey:@"supportedOrientations"];
+
+}
+
+@end
